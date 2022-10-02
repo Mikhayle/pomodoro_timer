@@ -1,0 +1,30 @@
+@import "../../../../../scss/variables";
+
+.btnStop {
+  width: 138px;
+  height: 55px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  background-color: #fff;
+  border: 2px solid $red;
+  color: $red;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: $red;
+  }
+
+
+  &:disabled {
+    border: 2px solid $gray;
+    color: $gray;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #fff;
+      color: $gray;
+    }
+  }
+}

@@ -1,0 +1,3 @@
+export const TIMER_MINUTES_START = 25;
+export const TIMER_SECONDS_START = 0;
+export const TIMER_DECREMENT_INTERVAL = 1000;

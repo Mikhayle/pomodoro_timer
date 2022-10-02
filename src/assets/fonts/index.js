@@ -1,0 +1,6 @@
+export * from './SFUIDisplay-Bold.ttf'
+export * from './SFUIDisplay-Light.ttf'
+export * from './SFUIDisplay-Medium.ttf'
+export * from './SFUIDisplay-Thin.ttf'
+export * from './SFUIDisplay-Regular.ttf'
+export * from './SFUIDisplay-Ultralight.ttf'

@@ -1,0 +1,18 @@
+@import "./../../../../../scss/variables";
+
+.item {
+  margin-bottom: 16px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+  color: $gray;
+  cursor: pointer;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.itemIcon {
+  margin-right: 10px;
+}

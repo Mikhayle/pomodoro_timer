@@ -1,0 +1,26 @@
+@import "../../../../../scss/variables";
+
+.btnSuccess {
+  width: 146px;
+  height: 55px;
+  background-color: $green;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  -webkit-transition: background-color .3s ease-in-out;
+  -moz-transition: background-color .3s ease-in-out;
+  -ms-transition: background-color .3s ease-in-out;
+  -o-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
+
+  &:hover {
+    background-color: $greenDark;
+    -webkit-transition: background-color .3s ease-in-out;
+    -moz-transition: background-color .3s ease-in-out;
+    -ms-transition: background-color .3s ease-in-out;
+    -o-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+  }
+}
+

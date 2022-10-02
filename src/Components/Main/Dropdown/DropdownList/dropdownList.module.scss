@@ -1,0 +1,27 @@
+@import "./../../../../scss/variables";
+
+.dropdownList {
+  padding: 22px 15px 17px 16px;
+  position: absolute;
+  transform: translate(-64%, 10px);
+  list-style-type: none;
+  background-color: #fff;
+  border: 1px solid $grayDark;
+  box-sizing: border-box;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -4.5px;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-top: 1px solid $grayDark;
+    border-right: 1px solid $grayDark;
+    transform: rotate(-45deg);
+  }
+
+}

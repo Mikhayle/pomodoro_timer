@@ -1,0 +1,32 @@
+@import "./../../../../scss/variables";
+
+.timerHeaderReady {
+  padding: 19px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $gray;
+  color: #fff;
+}
+
+.timerHeaderWork {
+  padding: 19px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $red;
+  color: #fff;
+}
+
+.timerHeaderBreak {
+  padding: 19px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $green;
+  color: #fff;
+}
+
+.todoItemName {
+  font-weight: 700;
+}

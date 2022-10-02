@@ -1,0 +1,30 @@
+@import "./../../../../scss/variables";
+
+.todoForm {
+  margin-bottom: 25px;
+}
+
+.todoInput {
+  margin-bottom: 25px;
+  padding: 19px 0 19px 15px;
+  width: 370px;
+  height: 55px;
+  border: none;
+  background-color: $grayLight1;
+  box-sizing: border-box;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+  color: $gray;
+
+  &::placeholder {
+    color: $gray;
+  }
+}
+
+.error {
+  margin-bottom: 15px;
+  display: block;
+  color: $red;
+  font-weight: 700;
+}

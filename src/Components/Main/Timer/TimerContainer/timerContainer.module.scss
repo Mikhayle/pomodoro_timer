@@ -1,0 +1,45 @@
+@import "./../../../../scss/variables";
+
+.timerBody {
+  padding: 70px 0 107px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $grayLight1;
+}
+
+.timerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer {
+  position: relative;
+  font-weight: 200;
+  font-size: 150px;
+  line-height: 179px;
+
+  & button {
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translate(100%, -50%);
+  }
+}
+
+.timerSubtitle {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+}
+
+.btnsWrapper {
+  display: flex;
+  justify-content: center;
+
+  & button:first-child {
+    margin-right: 25px;
+  }
+}
