@@ -1,4 +1,5 @@
 import {
+    TIMER_INCREMENT_COMPLETED_POMODORO,
     TIMER_INCREMENT_FULL_TIME, TIMER_INCREMENT_PAUSE_TIME,
     TIMER_SET_ID,
     TIMER_SET_MODE,
@@ -52,5 +53,11 @@ export const setFullTime = () => {
 export const setTimeOnPause = () => {
     return {
         type: TIMER_INCREMENT_PAUSE_TIME,
+    }
+}
+
+export const setCompletedPomodoroCount = () => {
+    return {
+        type: TIMER_INCREMENT_COMPLETED_POMODORO,
     }
 }

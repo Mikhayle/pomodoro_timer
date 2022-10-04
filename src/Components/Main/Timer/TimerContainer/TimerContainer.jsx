@@ -6,7 +6,8 @@ import {
     setFullTime,
     setMode,
     setStatus,
-    setTime, setTimeOnPause,
+    setTime,
+    setTimeOnPause,
     setTimerId,
     MODE_BREAK, MODE_READY,
     MODE_WORK,
@@ -27,12 +28,14 @@ const TimerContainer = ({todos}) => {
     const currentTodo = todos[0];
     const todoTitle = currentTodo === undefined ? `` : currentTodo.text;
     const dispatch = useDispatch();
-    const remainingMinutes = useSelector(state => state.timer.remainingTime.minutes);
-    const remainingSeconds = useSelector(state => state.timer.remainingTime.seconds);
-    const timerStatus = useSelector(state => state.timer.status);
-    const timerMode = useSelector(state => state.timer.mode);
-    const timerID = useSelector(state => state.timer.id);
-    const pauseTimerID = useSelector(state => state.timer.onPauseId);
+    const remainingMinutes = useSelector(({ timer }) => timer.remainingTime.minutes);
+    const remainingSeconds = useSelector(({ timer }) => timer.remainingTime.seconds);
+    const timerStatus = useSelector(({ timer }) => timer.status);
+    const timerMode = useSelector(({ timer }) => timer.mode);
+    const timerID = useSelector(({ timer }) => timer.id);
+    const pauseTimerID = useSelector(({ timer }) => timer.onPauseId);
+    const isWorkOnPause = timerMode === MODE_WORK && timerStatus === STATUS_PAUSED
+    const isWorkActive = timerMode === MODE_WORK && timerStatus === STATUS_ACTIVE
 
     const deletePomodoro = () => {
         // отнимаем одну помидорку
@@ -80,7 +83,7 @@ const TimerContainer = ({todos}) => {
 
     useEffect(() => {
         let pauseTimeCounter;
-        if (timerMode === MODE_WORK && timerStatus === STATUS_PAUSED) {
+        if (isWorkOnPause) {
             dispatch(todoIncrementPauseCount(currentTodo.id));
             pauseTimeCounter = setInterval(() => {
                 dispatch(setTimeOnPause());
@@ -94,7 +97,7 @@ const TimerContainer = ({todos}) => {
 
     useEffect(() => {
         let workTimeCounter;
-        if (timerMode === MODE_WORK && timerStatus === STATUS_ACTIVE) {
+        if (isWorkActive) {
             workTimeCounter = setInterval(() => {
                 dispatch(setFullTime())
             }, TIMER_DECREMENT_INTERVAL)

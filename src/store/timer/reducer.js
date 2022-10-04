@@ -11,6 +11,7 @@ export const TIMER_SET_ID = `TIMER_SET_ID`;
 export const TIMER_SET_PAUSE_ID = `TIMER_SET_PAUSE_ID`;
 export const TIMER_INCREMENT_FULL_TIME = `TIMER_INCREMENT_FULL_TIME`;
 export const TIMER_INCREMENT_PAUSE_TIME = `TIMER_INCREMENT_PAUSE_TIME`;
+export const TIMER_INCREMENT_COMPLETED_POMODORO = `TIMER_INCREMENT_COMPLETED_POMODORO`;
 
 
 export const timerReducer = (state, action) => {
@@ -57,6 +58,9 @@ export const timerReducer = (state, action) => {
             const reState = {...state};
             reState.pauseTime++;
             return reState;
+
+        case TIMER_INCREMENT_COMPLETED_POMODORO:
+            return { ...state, completedPomodoroCount: state.completedPomodoroCount + 1}
 
         default:
             return {

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, {useCallback, useMemo} from "react";
 import { ButtonSecondary } from "Components";
 import {
     MODE_BREAK,
@@ -9,14 +9,19 @@ import {
     STATUS_STOP,
     setMode,
     setStatus,
-    setTime
+    setTime, setCompletedPomodoroCount
 } from "store/timer";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { stopTimer } from "utils/timer";
 
 const ButtonSecondaryContainer =({ timerID, pauseTimerID, startTimer, currentTodo, timerStatus, timerMode, deletePomodoro }) => {
     const dispatch = useDispatch();
     const isDisabled = timerMode === MODE_READY;
+    const longBreak = useSelector(({ timer }) => timer.longBreak)
+    const shortBreak = useSelector(({ timer }) => timer.shortBreak)
+    const longBreakFrequency = useSelector(({ timer }) => timer.longBreakFrequency)
+    const completedPomodoroCount = useSelector(({ timer }) => timer.completedPomodoroCount)
+
 
     const handleStopClick = useCallback(() => {
         stopTimer(timerID);
@@ -30,15 +35,15 @@ const ButtonSecondaryContainer =({ timerID, pauseTimerID, startTimer, currentTod
         stopTimer(timerID);
         stopTimer(pauseTimerID);
         deletePomodoro();
+        console.log(completedPomodoroCount)
+        dispatch(setCompletedPomodoroCount())
+        console.log(completedPomodoroCount)
 
-        if (currentTodo.pomodoroCount % 3 === 0) {
-            startTimer(15, 0)
+        if (completedPomodoroCount !== 0 && (completedPomodoroCount + 1) % longBreakFrequency === 0) {
+            startTimer(longBreak, 0)
+        } else {
+            startTimer(shortBreak, 0)
         }
-
-        if (currentTodo.pomodoroCount % 3 !== 0) {
-            startTimer(5, 0)
-        }
-
 
         dispatch(setMode(MODE_BREAK));
         dispatch(setStatus(STATUS_ACTIVE));
@@ -63,6 +68,7 @@ const ButtonSecondaryContainer =({ timerID, pauseTimerID, startTimer, currentTod
 
         return `Стоп`;
     }, [timerStatus, timerMode]);
+
 
     return (
         <ButtonSecondary

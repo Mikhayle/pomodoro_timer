@@ -1,5 +1,4 @@
 import {v4 as uuid} from "uuid";
-import {act} from "@testing-library/react";
 
 export const TODO_ADD = `TODO_ADD`;
 export const TODO_REMOVE = `TODO_REMOVE`;
@@ -16,15 +15,13 @@ export const todosReducer = (state, action) => {
                     id: uuid(),
                     text: action.text,
                     pomodoroCount: 1,
-                    remainingMinutes: 25,
-                    remainingSeconds: 0,
                     pauseCount: 0,
                 },
                 ...state,
             ];
 
         case TODO_REMOVE:
-            return state.filter(item => {
+            return [...state].filter(item => {
                 return item.id !== action.id
             });
 
